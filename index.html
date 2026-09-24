@@ -128,6 +128,8 @@
   .frame.poker::before { background: radial-gradient(rgba(255,255,255,.18) 1.6px, transparent 1.8px) 0 0 / 16px 16px; }
   .frame.hippique::before { background: conic-gradient(rgba(255,255,255,.13) 25%, transparent 0 50%, rgba(255,255,255,.13) 0 75%, transparent 0) 0 0 / 46px 46px; }
   .frame.itw::before { background: repeating-linear-gradient(0deg, rgba(255,255,255,.15) 0 1px, transparent 1px 9px); }
+  
+  .frame.has-img::before { display: none; } /* Enlève les motifs si on a une miniature */
 
   /* ---------- Barre de navigation ---------- */
   .bar {
@@ -227,7 +229,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(10, 8, 20, .78), transparent 58%);
+    background: linear-gradient(to top, rgba(10, 8, 20, .85), transparent 65%);
   }
   .play {
     position: absolute;
@@ -563,6 +565,18 @@
       var horiz = it.orientation === "horizontal";
       var card = el("button", "frame card " + c.id + (horiz ? " h" : ""));
       card.type = "button";
+      
+      // Extraction automatique de la miniature YouTube
+      if (it.url) {
+        var m = it.url.match(/(?:youtu\.be\/|shorts\/|v=)([\w-]{6,})/);
+        if (m) {
+          card.style.backgroundImage = "url('https://img.youtube.com/vi/" + m[1] + "/hqdefault.jpg')";
+          card.style.backgroundSize = "cover";
+          card.style.backgroundPosition = "center";
+          card.classList.add("has-img");
+        }
+      }
+
       var play = el("span", "play");
       play.appendChild(svg('<path d="M8 5v14l11-7z"/>'));
       var meta = el("span", "meta");
