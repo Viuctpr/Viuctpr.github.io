@@ -97,8 +97,8 @@
   .hero h1 span { display: block; }
   .lede {
     margin-top: clamp(16px, 3vh, 28px);
-    max-width: 34ch;
-    font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+    max-width: 42ch;
+    font-size: clamp(1.2rem, 3vw, 1.75rem);
     color: rgba(243, 240, 250, .86);
   }
   .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
@@ -129,7 +129,7 @@
   .frame.hippique::before { background: conic-gradient(rgba(255,255,255,.13) 25%, transparent 0 50%, rgba(255,255,255,.13) 0 75%, transparent 0) 0 0 / 46px 46px; }
   .frame.itw::before { background: repeating-linear-gradient(0deg, rgba(255,255,255,.15) 0 1px, transparent 1px 9px); }
   
-  .frame.has-img::before { display: none; } /* Enlève les motifs si on a une miniature */
+  .frame.has-img::before { display: none; }
 
   /* ---------- Barre de navigation ---------- */
   .bar {
@@ -427,7 +427,7 @@
       { title: "On me drague !", url: "https://youtube.com/shorts/LXQ0-v8njEg" }
     ],
     hippique: [
-      { title: "Jackpot d'Or : Melodie", url: "https://youtube.com/shorts/TXtviDDfYrU" },
+      { title: "Jackpot d'Or : Melodie", url: "https://youtube.com/shorts/eAFmBrpMYGc" },
       { title: "Jackpot d'Or : Ana Maria", url: "https://youtube.com/shorts/0gizyKfKkMg" },
       { title: "Jackpot d'Or : François", url: "https://youtube.com/shorts/tc8J3o1Q5yM" }
     ],
@@ -566,7 +566,6 @@
       var card = el("button", "frame card " + c.id + (horiz ? " h" : ""));
       card.type = "button";
       
-      // Extraction automatique de la miniature YouTube
       if (it.url) {
         var m = it.url.match(/(?:youtu\.be\/|shorts\/|v=)([\w-]{6,})/);
         if (m) {
