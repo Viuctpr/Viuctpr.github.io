@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Victor Vaillant, créateur de contenu et community manager</title>
-<meta name="description" content="Portfolio vidéo de Victor Vaillant : sport, poker, hippique et interviews en bar. Disponible en freelance à partir de janvier 2027.">
+<meta name="description" content="Portfolio vidéo de Victor Vaillant : sport, poker, hippique et interviews en bar. Disponible dès maintenant.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -113,7 +113,7 @@
   }
   .btn.solid { background: #F3F0FA; color: #0d0b16; border-color: #F3F0FA; }
 
-  /* ---------- Frames (tuiles et cartes vidéo) ---------- */
+  /* ---------- Frames ---------- */
   .frame {
     position: relative;
     aspect-ratio: 9 / 16;
@@ -395,8 +395,8 @@
 </section>
 
 <section class="contact" id="contact">
-  <h2>Disponible à partir de janvier 2027</h2>
-  <p>CDD, CDI ou mission freelance : parlez-moi de votre projet, de votre événement ou de vos réseaux. Je vous réponds vite.</p>
+  <h2>Disponible dès maintenant</h2>
+  <p>CDD, CDI ou mission freelance : parlez-moi de votre projet, de votre événement ou de vos réseaux. Je vous réponds très vite.</p>
   <a class="btn" href="mailto:victorvaillant2004@gmail.com">Écrire à Victor</a>
 </section>
 
@@ -410,14 +410,8 @@
   <div class="stage" id="stage"></div>
 </dialog>
 
-
-
 <script>
 (function () {
-  // ====== À REMPLIR : tes vidéos ======
-  // Pour chaque vidéo : { title: "Titre", embed: "https://…lien d'intégration…", orientation: "vertical" ou "horizontal" }
-  // orientation est facultatif : par défaut "vertical" si non précisé.
-  // Tant qu'une catégorie est vide, des cartes "Vidéo à venir" s'affichent.
   var VIDEOS = {
     sport: [
       { title: "Foot & Food avec Franck Leboeuf", url: "", orientation: "horizontal" },
@@ -441,7 +435,6 @@
       { title: "Merch Xavier Pincemin", url: "https://youtube.com/shorts/nQZBsQXzKT8" }
     ]
   };
-  // =====================================
 
   var CATS = [
     { id: "sport",    label: "Sport",       color: "#2F6BFF", blurb: "Contenus réseaux sociaux pour PMU Sport." },
@@ -466,7 +459,6 @@
     return s;
   }
 
-  // --- Mur de vidéos du hero ---
   var wall = document.getElementById("wall");
   for (var i = 0; i < 6; i++) {
     var col = el("div", "col");
@@ -486,7 +478,6 @@
     wall.appendChild(col);
   }
 
-  // --- Navigation ---
   var links = document.getElementById("links");
   CATS.forEach(function (c) {
     var a = el("a", null, c.label);
@@ -504,7 +495,6 @@
     links.appendChild(a);
   });
 
-  // --- Lecteur ---
   var viewer = document.getElementById("viewer");
   var stage = document.getElementById("stage");
   var vt = document.getElementById("vt");
@@ -533,7 +523,6 @@
   viewer.addEventListener("click", function (e) { if (e.target === viewer) viewer.close(); });
   viewer.addEventListener("close", function () { stage.textContent = ""; });
 
-  // --- Sections par catégorie ---
   var main = document.getElementById("cats");
   CATS.forEach(function (c) {
     var items = (VIDEOS[c.id] || []).slice();
@@ -588,7 +577,6 @@
     main.appendChild(sec);
   });
 
-  // --- Section active dans la barre ---
   var anchors = [].slice.call(links.querySelectorAll("a"));
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
